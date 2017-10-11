@@ -22,3 +22,34 @@ Let  be the number of CITY entries in STATION, and let  be the number of distinc
 
 
 select count(city)- count(distinct city) from station;
+
+
+Querying max and min length of cities by name
+
+Select distinct(city), (length(city)) from st order by length(city) asc limit 1;
+Select distinct(city), (length(city)) from st order by length(city) desc limit 1;
+
+
+Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+
+select distinct(city)
+from station
+where city REGEXP'^[aeiou].*';
+
+Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+
+select distinct(city)
+from station
+where city REGEXP'[aeiou]$';
+
+Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.\
+select distinct(city)
+from station
+where city REGEXP'^[aeiou].*[aeiou]$';
+
+Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates.
+
+select distinct(city)
+from station
+where city REGEXP'^[^aeiou]';
+
